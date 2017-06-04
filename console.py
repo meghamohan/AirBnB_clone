@@ -326,4 +326,8 @@ class HBNBCommand(cmd.Cmd):
             return False
 
 if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+    try:
+        HBNBCommand().cmdloop()
+    except KeyboardInterrupt:
+        print()
+        exit()
