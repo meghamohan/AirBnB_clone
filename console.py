@@ -15,7 +15,15 @@ class HBNBCommand(cmd.Cmd):
     Command interpreter for AirBnB Console
     """
     prompt = "(hbnb) "
-    cls = ["BaseModel", "User", "Review", "Place", "Amenity", "City", "State"]
+    cls = {
+        'BaseModel': BaseModel,
+        'User': User,
+        'Review': Review,
+        'Place': Place,
+        'Amenity': Amenity,
+        'City': City,
+        "State": State
+    }
 
     def emptyline(self):
         """ accept empty lines """
