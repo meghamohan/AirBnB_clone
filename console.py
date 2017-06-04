@@ -85,10 +85,12 @@ class HBNBCommand(cmd.Cmd):
         name and id
         """
         args = line.split()
-        if len(args) == 1:
-            print("** instance id missing **")
-        elif len(args) == 0:
+        if len(args) == 0:
             print("** class name missing **")
+        elif args[0] not in self.cls:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
         else:
             if args[0] in self.cls:
                 storage.reload()
@@ -99,8 +101,6 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
                 else:
                     print("** no instance found **")
-            else:
-                print("** class doesn't exist **")
 
     def do_update(self, line):
         """
