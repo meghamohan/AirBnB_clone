@@ -329,5 +329,4 @@ if __name__ == '__main__':
     try:
         HBNBCommand().cmdloop()
     except KeyboardInterrupt:
-        print()
         exit()
