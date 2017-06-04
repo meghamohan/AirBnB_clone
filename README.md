@@ -22,6 +22,26 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
 + Utilizing `*args` and more specifically, `**kwargs` - to handle named arguments passed as function parameters
 
 
+## Functionality
+
++ Creates an object (instance of defined BaseModel Class - as described below)
++ Implements data model of previously created instance
++ Allows manipulation and management of objects/instances (via the following commands):
+++ `Create`
+++ `Update`
+++ `Destroy`
+++ `New`
+++ `All`
++ Store files in JSON format - via serialization and deserialization
+
+## Usage / Execution
+
+
+
+
+
+
+
 ### Environment
 + Our HBNB Clone has been interpreted/compiled/tested on `Ubuntu 14.04 LTS`
 + Written and tested utilizing `Python3 (Version 3.4.3)` and `PEP 8 Styling`
