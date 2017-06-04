@@ -26,8 +26,11 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
 
 + Creates an object (instance of defined BaseModel Class - as described below)
 + Implements data model of previously created instance
-+ Allows manipulation and management of objects/instances (via the following commands): `Create`, `Update`, `Destroy`,`New`, `All`
 + Store files in `JSON` format - via serialization and deserialization
++ Allows manipulation and management of objects/instances (via the following commands): 
+  `create`, `update`, `destroy`,`new`, `all`
++ Other commands include:
+  `show`, `help`, `quit`, `EOF`
 
 ## Usage / Execution
 
