@@ -21,6 +21,12 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
 + How to manage `datetime` and `UUID`
 + Utilizing `*args` and more specifically, `**kwargs` - to handle named arguments passed as function parameters
 
+
+### Environment
++ Our HBNB Clone has been interpreted/compiled/tested on `Ubuntu 14.04 LTS`
++ Written and tested utilizing `Python3 (Version 3.4.3)` and `PEP 8 Styling`
+
+
 ### Authors
 
 *Megha Mohan* - [Github](https://github.com/meghamohan)
