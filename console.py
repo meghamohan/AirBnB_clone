@@ -41,20 +41,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
         else:
             if args[0] in self.cls:
-                if args[0] == "BaseModel":
-                    newModel = BaseModel()
-                if args[0] == "User":
-                    newModel = User()
-                if args[0] == "State":
-                    newModel = State()
-                if args[0] == "City":
-                    newModel = City()
-                if args[0] == "Amenity":
-                    newModel = Amenity()
-                if args[0] == "Place":
-                    newModel = Place()
-                if args[0] == "Review":
-                    newModel = Review()
+                newModel = self.cls.get(args[0])()
                 newModel.save()
                 print(newModel.id)
 
