@@ -25,13 +25,16 @@ class HBNBCommand(cmd.Cmd):
         "State": State
     }
 
-    def emptyline(self):
-        """ accept empty lines """
-        return False
-
     def do_EOF(self, line):
         """ command to exit console """
         return True
+
+    def emptyline(self):
+        """ accept empty lines """
+        pass
+
+    def postloop(self):
+        print()
 
     def do_quit(self, line):
         """ quit command """
