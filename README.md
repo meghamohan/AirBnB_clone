@@ -35,10 +35,26 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
 ## Usage / Execution
 
 
+- To utilize our command line interpreter, please follow these steps (in order):
 
-
-
-
+ +First step is to clone the repository into your directory:
+ +```
+ +$ git clone https://github.com/halinav00/AirBnB_clone.git
+ +```
+ +To run the console, type `./console.py` script.
+ +```
+ +$ ./console.py
+ +```
+  Type `help` for list of commands.
+ +```
+ +(hbnb) help
+ +
+ +Documented commands (type help <topic>):
+ +========================================
+ +EOF  all  create  destroy  help  quit  show  update
+ +
+ +(hbnb)
+ +```
 
 ### Environment
 + Our HBNB Clone has been interpreted/compiled/tested on `Ubuntu 14.04 LTS`
