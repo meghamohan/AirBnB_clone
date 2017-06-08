@@ -2,10 +2,10 @@
 import cmd
 
 class HBNBCommand(cmd.Cmd):
-    def __init__(self):
-        cmd.Cmd.__init__(self)
-        self.prompt = "(hbnb) "
-        """print("{}".format(cmd.Cmd.__dict__)) """
+    """ def __init__(self):"""
+    """   cmd.Cmd.__init__(self)"""
+    prompt = "(hbnb) "
+    """print("{}".format(cmd.Cmd.__dict__)) """
 
     def do_greet(self, line):
         print ("hello")
@@ -18,7 +18,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         return True
-    def do_eof(self, line):
+    def do_quit(self, line):
         return True
 
 
