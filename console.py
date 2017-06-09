@@ -43,6 +43,8 @@ class HBNBCommand(cmd.Cmd):
                 print(newModel.id)
 
     def do_show(self, line):
+        """Prints string representation of an instance
+         based on class name/id"""
         args = line.split(' ')
         if args[0] is None:
             print("** class name missing **")
@@ -52,11 +54,13 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             objs = storage.all()
-            myId = args[1]
-            print(myId)
-            if myId in objs.keys():
-                print(objs[myId])
-            else:
+            myId = args[0] + '.' + args[1]
+            found = False
+            for key in objs:
+                if myId == key:
+                    found = True
+                    print(objs[myId])
+            if not found:
                 print("** no instance found **")
 
 
@@ -79,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.reload()
                 myDict = storage.all()
                 for key in myDict.keys():
-                    if args[0] in str(myDict[key]):
+                    if args[0] in key.split('.'):
                         print(myDict[key])
             else:
                 print("error!!")
