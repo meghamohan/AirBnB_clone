@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 import cmd
-from models.base_model import BaseModel
+#from models.base_model import BaseModel
 from models import *
+#import models
 import json
 
 class HBNBCommand(cmd.Cmd):
     """ def __init__(self):"""
     """   cmd.Cmd.__init__(self)"""
     prompt = "(hbnb) "
-    cls = ["BaseModel", "User"]
+    cls = ["BaseModel", "User", "Review", "Place", "Amenity", "City", "State"]
 
 
 
@@ -36,9 +37,21 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.cls:
                 print("** class doesn't exist **")
         else:
-             if args[0] in HBNBCommand.cls:
+            if args[0] in HBNBCommand.cls:
                 if args[0] == "BaseModel":
                     newModel = BaseModel()
+                if args[0] == "User":
+                    newModel = User()
+                if args[0] == "State":
+                    newModel = State()
+                if args[0] == "City":
+                    newModel = City()
+                if args[0] == "Amenity":
+                    newModel = Amenity()
+                if args[0] == "Place":
+                    newModel = Place()
+                if args[0] == "Review":
+                    newModel = Review()
                 newModel.save()
                 print(newModel.id)
 

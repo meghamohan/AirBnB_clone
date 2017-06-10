@@ -4,7 +4,7 @@
 from datetime import datetime, date, time
 from uuid import uuid4
 import json
-from models import storage
+import models
 
 class BaseModel:
     """ defining BaseModel class """
@@ -18,17 +18,15 @@ class BaseModel:
             if 'created_at' in kwargs:
                 self.created_at = datetime.strptime(kwargs.get('created_at'), self.dateFormat)
             if 'updated_at' in kwargs:
-                """ self.updated_at = datetime.isoformat()"""
                 self.updated_at = datetime.strptime(kwargs.get('updated_at'), self.dateFormat)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
-            """self.updated_at = datetime.now()"""
-            storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_json(self):
         newDict = self.__dict__.copy()
