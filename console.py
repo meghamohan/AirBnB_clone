@@ -65,12 +65,50 @@ class HBNBCommand(cmd.Cmd):
 
 
     def do_destroy(self, line):
-        pass
-
+        args = line.split(' ')
+        if len(args) < 2:
+            print("** class name missing **")
+        else:
+            if args[0] in self.cls:
+                storage.reload()
+                myDict = storage.all()
+                myId = args[0] + '.' + args[1]
+                if myId in myDict.keys():
+                    del myDict[myId]
+                    storage.save()
+                else:
+                    print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
 
     def do_update(self, line):
-        pass
-
+        args = line.split(' ')
+        if len(args) < 4:
+            if len(args) == 0:
+                print("** class name missing **")
+            if len(args) == 1:
+                print("** instance id missing **")
+            if len(args) == 2:
+                print("** value missing **")
+            if len(args) == 3:
+                print("** value missing **")
+        else:
+            argCls = args[0]
+            argId = args[1]
+            argId = argCls + '.' + argId
+            attrName = args[2]
+            attrValue = args[3].replace('\"', '')
+            storage.reload()
+            myDict = storage.all()
+            if argCls in self.cls:
+                if argId in myDict:
+                    myNewObj = myDict[argId]
+                    setattr(myNewObj, attrName, attrValue)
+                    storage.save()
+                else:
+                    print("** no instance found **")
+            else:
+                print("** class doesn't exist **")   
 
     def do_all(self, line):
         """
@@ -78,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
         Can be called directly or through object type
         """
         args = line.split()
-        if len(args) > 1:
+        if len(args) > 0:
             if args[0] in self.cls:
                 storage.reload()
                 myDict = storage.all()
@@ -86,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
                     if args[0] in key.split('.'):
                         print(myDict[key])
             else:
-                print("error!!")
+                print("** class doesn't exist **")
         else:
             storage.reload()
             myDict = storage.all()

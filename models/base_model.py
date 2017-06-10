@@ -8,16 +8,18 @@ from models import storage
 
 class BaseModel:
     """ defining BaseModel class """
+    dateFormat = "%Y-%m-%dT%H:%M:%S.%f"
+
     def __init__(self, *args, **kwargs):
         if kwargs:
+            self.__dict__ = kwargs
             if 'id' in kwargs:
                 self.id = kwargs.get('id')
             if 'created_at' in kwargs:
-                self.created_at = datetime.strptime(kwargs.get('created_at'), "%Y-%m-%d %H:%M:%S.%f")
+                self.created_at = datetime.strptime(kwargs.get('created_at'), self.dateFormat)
             if 'updated_at' in kwargs:
                 """ self.updated_at = datetime.isoformat()"""
-                self.updated_at = datetime.strptime(kwargs.get('updated_at'), "%Y-%m-%d %H:%M:%S.%f")
-
+                self.updated_at = datetime.strptime(kwargs.get('updated_at'), self.dateFormat)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
@@ -31,9 +33,9 @@ class BaseModel:
     def to_json(self):
         newDict = self.__dict__.copy()
         newDict.update({'__class__': self.__class__.__name__})
-        newDict.update({'created_at': str(self.created_at)})
-        if "updated_at" in newDict:
-            newDict.update({'updated_at': str(self.updated_at)})
+        newDict.update({'created_at': str(self.created_at.isoformat())})
+        if hasattr(self, 'updated_at'):
+            newDict.update({'updated_at': str(self.updated_at.isoformat())})
         return (newDict)
 
     def __str__(self):

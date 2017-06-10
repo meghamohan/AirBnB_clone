@@ -47,5 +47,25 @@ class FileStorage:
                     if className in 'BaseModel':
                         from models.base_model import BaseModel
                         self.__objects[key] = BaseModel(**jsonObj[key])
+                    if className in 'User':
+                        from models.user import User
+                        self.__objects[key] = User(**jsonObj[key])
+                    if className in 'State':
+                        from models.state import State
+                        self.__objects[key] = State(**jsonObj[key])
+                    if className in 'City':
+                        from models.city import City
+                        self.__objects[key] = City(**jsonObj[key])
+                    if className in 'Amenity':
+                        from models.amenity import Amenity
+                        self.__objects[key] = Amenity(**jsonObj[key])
+                    if className in 'Place':
+                        from models.place import Place
+                        self.__objects[key] = Place(**jsonObj[key])
+                    if className in 'Review':
+                        from models.review import Review
+                        self.__objects[key] = Review(**jsonObj[key])
+
+
         else:
             self.__objects = {}
