@@ -16,8 +16,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """ function initialization """
         if len(kwargs) > 0:
-            if "__class__" in kwargs:
-                del kwargs["__class__"]
+            self.__dict__ = kwargs   
             if 'created_at' in kwargs:
                 self.created_at = datetime.strptime(kwargs.get('created_at'),
                                                     self.dateFormat)
