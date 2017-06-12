@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ Base model class """
+
+
 from datetime import datetime, date, time
 from uuid import uuid4
 import json
