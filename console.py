@@ -20,18 +20,19 @@ class HBNBCommand(cmd.Cmd):
     cls = ["BaseModel", "User", "Review", "Place", "Amenity", "City", "State"]
 
     def do_greet(self, line):
+        """ greet """
         print ("hello")
 
-    def do_test(self, line):
-        print ("testing...")
-
     def emptyline(self):
+        """ accept empty lines """
         return False
 
     def do_EOF(self, line):
+        """ EOF command """
         return True
 
     def do_quit(self, line):
+        """ quit command """
         return True
 
     def do_create(self, line):
