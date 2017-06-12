@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import json
 import os
-
 """ FileStorage class """
+
 
 class FileStorage:
     """ contains methods to serialize objects to JSON
@@ -17,8 +17,7 @@ class FileStorage:
     def new(self, obj):
         """ sets in __objects the obj with key:
          <obj class name>.id """
-        self.__objects[ type(obj).__name__ + '.' + obj.id] = obj
-
+        self.__objects[type(obj).__name__ + '.' + obj.id] = obj
 
     def save(self):
         """ serializes __objects to the JSON
@@ -26,7 +25,6 @@ class FileStorage:
         json_dict = {}
         for key in self.__objects.keys():
             json_dict[key] = self.__objects[key].to_json()
-        
         with open(self.__file_path, 'w', encoding='utf8') as f:
             f.write(json.dumps(json_dict))
 
@@ -36,10 +34,10 @@ class FileStorage:
         """ deserializes the JSON file to __objects
          (only if the JSON file exists ;
          otherwise, do nothing)
-         key => <obj class name>.id 
+         key => <obj class name>.id
         """
         if os.path.isfile(self.__file_path):
-            with open(self.__file_path, mode ='r+') as f:
+            with open(self.__file_path, mode='r+') as f:
                 jsonObj = json.load(f)
                 for key in jsonObj.keys():
                     className = key.split('.')[0]
@@ -65,7 +63,5 @@ class FileStorage:
                     if className in 'Review':
                         from models.review import Review
                         self.__objects[key] = Review(**jsonObj[key])
-
-
         else:
             self.__objects = {}
