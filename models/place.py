@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 class Place(BaseModel):
     """Place class. Subclass of basemodel"""
     def __init__(self, *args, **kwargs):
+        """inheirts the superclass"""
         super().__init__(*args, **kwargs)
     name = ""
     city_id = ""

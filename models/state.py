@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 class State(BaseModel):
     """State class. Subclass of basemodel"""
     def __init__(self, *args, **kwargs):
+        """inherits the superclass"""
         super().__init__(*args, **kwargs)
 
     name = ""
