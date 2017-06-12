@@ -1,17 +1,23 @@
 #!/usr/bin/python3
 import cmd
-#from models.base_model import BaseModel
-from models import *
-#import models
 import json
 
+from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
+
 class HBNBCommand(cmd.Cmd):
-    """ def __init__(self):"""
-    """   cmd.Cmd.__init__(self)"""
+    """
+    Command interpreter for AirBnB Console
+    """
     prompt = "(hbnb) "
     cls = ["BaseModel", "User", "Review", "Place", "Amenity", "City", "State"]
-
-
 
     def do_greet(self, line):
         print ("hello")
@@ -24,14 +30,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         return True
+
     def do_quit(self, line):
         return True
 
-
     def do_create(self, line):
-        """Create a new instance of BaseModel, save it (to JSON), prints id"""
+        """
+        Create a new instance of BaseModel,
+        save it (to JSON), prints id
+        """
         args = line.split(' ')
-        print(args)
         if (len(args) < 1):
             print("** class name missing **")
         elif args[0] not in HBNBCommand.cls:
@@ -56,8 +64,10 @@ class HBNBCommand(cmd.Cmd):
                 print(newModel.id)
 
     def do_show(self, line):
-        """Prints string representation of an instance
-         based on class name/id"""
+        """
+        Prints string representation of an instance
+        based on class name/id
+        """
         args = line.split(' ')
         if args[0] is None:
             print("** class name missing **")
@@ -76,8 +86,11 @@ class HBNBCommand(cmd.Cmd):
             if not found:
                 print("** no instance found **")
 
-
     def do_destroy(self, line):
+        """
+        Deletes an instance based on the class
+        name and id
+        """
         args = line.split(' ')
         if len(args) < 2:
             print("** class name missing **")
@@ -95,6 +108,10 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_update(self, line):
+        """
+        Updates an instance based on the class name and
+        id by adding or updating attribute
+        """
         args = line.split(' ')
         if len(args) < 4:
             if len(args) == 0:
@@ -110,18 +127,21 @@ class HBNBCommand(cmd.Cmd):
             argId = args[1]
             argId = argCls + '.' + argId
             attrName = args[2]
-            attrValue = args[3].replace('\"', '')
+            if self.is_number(args[3]):
+                attrValue = int(args[3].replace('\"', ''))
+            else:
+                attrValue = args[3].replace('\"', '')
             storage.reload()
             myDict = storage.all()
             if argCls in self.cls:
                 if argId in myDict:
                     myNewObj = myDict[argId]
                     setattr(myNewObj, attrName, attrValue)
-                    storage.save()
+                    myNewObj.save()
                 else:
                     print("** no instance found **")
             else:
-                print("** class doesn't exist **")   
+                print("** class doesn't exist **")
 
     def do_all(self, line):
         """
@@ -142,8 +162,16 @@ class HBNBCommand(cmd.Cmd):
             storage.reload()
             myDict = storage.all()
             for key in myDict.keys():
-                print(myDict[key]) 
+                print(myDict[key])
 
+    def is_number(self, s):
+        """ helper function to check if the value 's' is a
+        number or not"""
+        try:
+            int(s)
+            return True
+        except ValueError:
+            return False
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
