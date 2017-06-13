@@ -23,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_EOF(self, line):
-        """ EOF command """
+        """ command to exit console """
         return True
 
     def do_quit(self, line):
@@ -88,7 +88,9 @@ class HBNBCommand(cmd.Cmd):
         name and id
         """
         args = line.split(' ')
-        if len(args) < 2:
+        if len(args) == 1:
+            print("** instance id missing **")
+        elif len(args) == 0:
             print("** class name missing **")
         else:
             if args[0] in self.cls:
