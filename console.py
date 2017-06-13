@@ -179,9 +179,22 @@ class HBNBCommand(cmd.Cmd):
         elif line[0:8] == ".destroy":
             self.do_destroy("BaseModel " + line[10:-2])
         elif line[0:7] == ".update":
-            print("To Be Done")
-            """print(self.reconstructMyArg(line[8:-1]))
-            self.do_update("BaseModel " + self.reconstructMyArg(line[8:-1]))"""
+            self.do_update("BaseModel " + self.reconstructMyArg(line[8:-1]))
+
+    def do_Place(self, line):
+        """does functions like all,count,show,update
+        destroy"""
+        if line == ".all()":
+            self.do_all("Place")
+        elif line == ".count()":
+            self.printCount("Place")
+        elif line[0:5] == ".show":
+            print("Place " + line[7:-2])
+            self.do_show("Place " + line[7:-2])
+        elif line[0:8] == ".destroy":
+            self.do_destroy("Place " + line[10:-2])
+        elif line[0:7] == ".update":
+            self.do_update("Place " + self.reconstructMyArg(line[8:-1]))
 
     def do_User(self, line):
         """does functions like all,count,show,update
@@ -196,7 +209,7 @@ class HBNBCommand(cmd.Cmd):
         elif line[0:8] == ".destroy":
             self.do_destroy("User " + line[10:-2])
         elif line[0:7] == ".update":
-            print("To Be Done")
+            self.do_update("User " + self.reconstructMyArg(line[8:-1]))
 
     def do_State(self, line):
         """does functions like all,count,show,update
@@ -211,7 +224,7 @@ class HBNBCommand(cmd.Cmd):
         elif line[0:8] == ".destroy":
             self.do_destroy("State " + line[10:-2])
         elif line[0:7] == ".update":
-            print("To Be Done")
+            self.do_update("State " + self.reconstructMyArg(line[8:-1]))
 
     def do_Review(self, line):
         """does functions like all,count,show,update
@@ -226,7 +239,7 @@ class HBNBCommand(cmd.Cmd):
         elif line[0:8] == ".destroy":
             self.do_destroy(" " + line[10:-2])
         elif line[0:7] == ".update":
-            print("To Be Done")
+            self.do_update("Review " + self.reconstructMyArg(line[8:-1]))
 
     def do_Amenity(self, line):
         """does functions like all,count,show,update
@@ -241,7 +254,7 @@ class HBNBCommand(cmd.Cmd):
         elif line[0:8] == ".destroy":
             self.do_destroy("Amenity " + line[10:-2])
         elif line[0:7] == ".update":
-            print("To Be Done")
+            self.do_update("Amenity " + self.reconstructMyArg(line[8:-1]))
 
     def do_City(self, line):
         """does functions like all,count,show,update
@@ -256,12 +269,11 @@ class HBNBCommand(cmd.Cmd):
         elif line[0:8] == ".destroy":
             self.do_destroy("City " + line[10:-2])
         elif line[0:7] == ".update":
-            print("To Be Done")
+            self.do_update("City " + self.reconstructMyArg(line[8:-1]))
 
     def reconstructMyArg(self, arg):
+        """ formats the args"""
         newArgs = arg.split()
-        print(newArgs[0])
-        print(newArgs[1])
         newArg0 = newArgs[0].replace('\"', '')
         newArg0 = newArg0.replace(',', '')
         newArg1 = newArgs[1].replace('\"', '')
@@ -274,7 +286,7 @@ class HBNBCommand(cmd.Cmd):
         newArg2 = newArg2.replace('{', '')
         newArg2 = newArg2.replace(':', '')
         newArg2 = newArg2.replace(',', '')
-        newArg3 = newArgs[3].replace('\"', '')
+        """newArg3 = newArgs[3].replace('\"', '')
         newArg3 = newArg3.replace('\'', '')
         newArg3 = newArg3.replace(':', '')
         newArg3 = newArg3.replace(',', '')
@@ -282,9 +294,8 @@ class HBNBCommand(cmd.Cmd):
         newArg4 = newArg4.replace('\'', '')
         newArg4 = newArg4.replace('}', '')
         newArg4 = newArg4.replace(':', '')
-        newArg4 = newArg4.replace(',', '')
-        return (newArg0 + ' ' + newArg1 + ' ' + newArg2 +
-                ' ' + newArg3 + ' ' + newArg4)
+        newArg4 = newArg4.replace(',', '')"""
+        return (newArg0 + ' ' + newArg1 + ' ' + newArg2)
 
     def clsAll(self, arg):
         """prints all instances of a specific class"""
@@ -299,6 +310,7 @@ class HBNBCommand(cmd.Cmd):
             print("[]")
 
     def printCount(self, arg):
+        """counts number of instances"""
         myDict = storage.all()
         count = 0
         for k in myDict.keys():
@@ -306,12 +318,6 @@ class HBNBCommand(cmd.Cmd):
             if (obj == arg):
                 count += 1
         print(count)
-
-    def clsShow(self, arg):
-        pass
-
-    def clsDestroy(self, arg):
-        pass
 
     def is_number(self, s):
         """ helper function to check if the value 's' is a
