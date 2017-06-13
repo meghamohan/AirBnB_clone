@@ -18,10 +18,6 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     cls = ["BaseModel", "User", "Review", "Place", "Amenity", "City", "State"]
 
-    def do_greet(self, line):
-        """ greet """
-        print ("hello")
-
     def emptyline(self):
         """ accept empty lines """
         return False
@@ -149,6 +145,7 @@ class HBNBCommand(cmd.Cmd):
         Can be called directly or through object type
         """
         args = line.split()
+        count = 0
         if len(args) > 0:
             if args[0] in self.cls:
                 storage.reload()
@@ -156,6 +153,9 @@ class HBNBCommand(cmd.Cmd):
                 for key in myDict.keys():
                     if args[0] in key.split('.'):
                         print(myDict[key])
+                        count += 1
+                if count == 0:
+                    print("[]")
             else:
                 print("** class doesn't exist **")
         else:
