@@ -23,8 +23,8 @@ class BaseModel:
             if 'updated_at' in kwargs:
                 self.updated_at = datetime.strptime(kwargs.get('updated_at'),
                                                     self.dateFormat)
-            if "__class__" in kwargs:
-                del kwargs["__class__"]
+#            if "__class__" in kwargs:
+#                del kwargs["__class__"]
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
