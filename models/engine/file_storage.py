@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ FileStorage class """
+
+
 import json
 import os
 
@@ -7,6 +9,7 @@ import os
 class FileStorage:
     """ contains methods to serialize objects to JSON
     and to deserialize JSON files to objects """
+
     __file_path = './file.json'
     __objects = {}
 
@@ -27,8 +30,6 @@ class FileStorage:
             json_dict[key] = self.__objects[key].to_json()
         with open(self.__file_path, 'w', encoding='utf8') as f:
             f.write(json.dumps(json_dict))
-
-            """ f.write(json.dumps(self.__objects))"""
 
     def reload(self):
         """ deserializes the JSON file to __objects
