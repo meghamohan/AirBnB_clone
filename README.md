@@ -56,7 +56,7 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
  + (hbnb)
  + ```
 
-## Create a Command Interpreter to manage your AirBnB objects that does following:
+## AirBnb Command Interpreter does the following commands:
 - Supports basic help, quit, exit and enter commands.
 ```
 help
