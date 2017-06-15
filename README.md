@@ -56,6 +56,39 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
  + (hbnb)
  + ```
 
+## Create a Command Interpreter to manage your AirBnB objects that does following:
+- Supports basic help, quit, exit and enter commands.
+```
+help
+ctrl+d
+quit
+exit
+enter
+```
+- Create a new object (ex: a new User or a new Place).
+```
+create <classname>
+```
+- Retrieve an object from a file, a database etc.
+```
+show <classname>
+all
+<classname>.count
+<classname>.show
+```
+- Do operations on objects (count, compute stats, etc.).
+```
+<classname>.count
+```
+- Update attributes of an object.
+```
+update <classname> <id> <attribute_to_update> <updating_value>
+```
+- Destroy an object.
+```
+destroy <classname> <id>
+```
+
 ### Environment
 + Our HBNB Clone has been interpreted/compiled/tested on `Ubuntu 14.04 LTS`
 + Written and tested utilizing `Python3 (Version 3.4.3)` and `PEP 8 Styling`
