@@ -234,7 +234,7 @@ class HBNBCommand(cmd.Cmd):
             print("Review " + line[7:-2])
             self.do_show("Review " + line[7:-2])
         elif line[0:8] == ".destroy":
-            self.do_destroy(" " + line[10:-2])
+            self.do_destroy("Review " + line[10:-2])
         elif line[0:7] == ".update":
             self.do_update("Review " + self.reconstructMyArg(line[8:-1]))
 
