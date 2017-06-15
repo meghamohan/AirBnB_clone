@@ -39,7 +39,7 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
 
  + You must first clone the repository into your directory:
  +```
- +$ `git clone` https://github.com/halinav00/AirBnB_clone.git
+ +$ `git clone` https://github.com/meghamohan/AirBnB_clone.git
  +```
  + To run the console, type `./console.py` script.
  +```
@@ -54,7 +54,6 @@ to allow us, as developers, to manipulate and store data sans visual interface(G
  + EOF  all  create  destroy  help  quit  show  update
  +
  + (hbnb)
- + ```
 
 ## AirBnb Command Interpreter does the following commands:
 - Supports basic help, quit, exit and enter commands.
