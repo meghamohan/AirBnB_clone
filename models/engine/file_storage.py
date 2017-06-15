@@ -7,9 +7,7 @@ import os
 
 
 class FileStorage:
-    """ contains methods to serialize objects to JSON
-    and to deserialize JSON files to objects """
-
+    """ contains methods to serialize and deserialize to objects """
     __file_path = './file.json'
     __objects = {}
 
@@ -23,22 +21,17 @@ class FileStorage:
         self.__objects[type(obj).__name__ + '.' + obj.id] = obj
 
     def save(self):
-        """ serializes __objects to the JSON
-         file (path: __file_path) """
+        """ serializes __objects to the JSON"""
         json_dict = {}
         for key in self.__objects.keys():
             json_dict[key] = self.__objects[key].to_json()
-        with open(self.__file_path, 'w', encoding='utf-8') as f:
+        with open(self.__file_path, 'w') as f:
             f.write(json.dumps(json_dict))
 
     def reload(self):
-        """ deserializes the JSON file to __objects
-         (only if the JSON file exists ;
-         otherwise, do nothing)
-         key => <obj class name>.id
-        """
+        """ deserializes the JSON file to __objects """
         if os.path.isfile(self.__file_path):
-            with open(self.__file_path, mode='r+', encoding="utf-8") as f:
+            with open(self.__file_path, mode='r+') as f:
                 jsonObj = json.load(f)
                 for key in jsonObj.keys():
                     className = key.split('.')[0]

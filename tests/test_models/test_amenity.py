@@ -10,9 +10,11 @@ class AmenityTest(unittest.TestCase):
         self.cls = Amenity()
 
     def testType(self):
+        """test type"""
         self.assertEqual(self.cls.__class__.__name__, "Amenity")
 
     def testAttributes(self):
+        """test all attributes"""
         self.assertTrue(hasattr(self.cls, "id"))
         self.assertTrue(hasattr(self.cls, "created_at"))
         self.assertFalse(hasattr(self.cls, "updated_at"))
@@ -21,12 +23,15 @@ class AmenityTest(unittest.TestCase):
         self.cls.phno = 408505
         self.assertTrue(hasattr(self.cls, "school"))
         self.assertTrue(hasattr(self.cls, "phno"))
+        self.assertTrue(hasattr(self.cls, "name"))
 
     def testSave(self):
+        """test save"""
         self.cls.save()
         self.assertTrue(hasattr(self.cls, "updated_at"))
 
     def testToJson(self):
+        """test to json func"""
         self.assertTrue(type(self.cls.to_json()) is dict)
 
 if __name__ == "__main__":

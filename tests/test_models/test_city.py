@@ -21,6 +21,12 @@ class CityTest(unittest.TestCase):
         self.cls.phno = 408505
         self.assertTrue(hasattr(self.cls, "school"))
         self.assertTrue(hasattr(self.cls, "phno"))
+        self.assertTrue(hasattr(self.cls, "name"))
+        self.assertEqual(self.cls.__class__.__name__, "City")
+        self.assertEqual(self.cls.name, "")
+        self.assertEqual(self.cls.state_id, "")
+        self.cls.name = "Holberton"
+        self.assertEqual(self.cls.name, "Holberton")
 
     def testSave(self):
         self.cls.save()
